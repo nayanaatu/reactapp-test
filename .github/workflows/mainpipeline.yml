@@ -25,11 +25,11 @@ jobs:
          docker rmi -f $(docker image ls -a -q)
       - name:  Docker Frontend Images
         run: |
-         cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-frontend-master
+         cd /home/runner/work/reactapp-test/reactapp-test/WWA-frontend-master
          docker build -t wwag3/wednesdaywickedadventures:latest . 
       - name: Build Docker Backend Images
         run: |
-         cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-backend-master
+         cd /home/runner/work/reactapp-test/reactapp-test/WWA-backend-master
          docker build -t wwag3/wednesdaywickedadventures:backend . 
       - name: Publish Image to docker Hub
         run: |
