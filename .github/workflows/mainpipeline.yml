@@ -3,7 +3,7 @@ name: frontend-master-workflow
 on: 
   push:
     branches:
-      - dev-L00171125-Abhishek-DGW-132
+      - main
   pull_request:
     types:
       - "opened"
@@ -25,11 +25,11 @@ jobs:
          docker rmi -f $(docker image ls -a -q)
       - name:  Docker Frontend Images
         run: |
-         cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-frontend-master
+         cd /home/runner/work/reactapp-test/reactapp-test/WWA-frontend-master
          docker build -t wwag3/wednesdaywickedadventures:latest . 
       - name: Build Docker Backend Images
         run: |
-         cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-backend-master
+         cd /home/runner/work/reactapp-test/reactapp-test/WWA-backend-master
          docker build -t wwag3/wednesdaywickedadventures:backend . 
       - name: Publish Image to docker Hub
         run: |
@@ -59,7 +59,7 @@ jobs:
 
       - name: runnning Terraform Commands
         run: |
-         cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/terraform
+         cd /home/runner/work/reactapp-test/reactapp-test/terraform
          terraform init
          terraform validate -no-color
          terraform plan 
@@ -137,24 +137,24 @@ jobs:
 
     - name: Install JSDoc
       run: |
-       cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-frontend-master
+       cd /home/runner/work/reactapp-test/reactapp-test/WWA-frontend-master
        npm i -g jsdoc
 
     - name: Install docdash Theam
       run: |
-       cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-frontend-master
+       cd /home/runner/work/reactapp-test/reactapp-test/WWA-frontend-master
        npm i docdash
 
     - name: Generate JSDocs
       run: |
-          cd /home/runner/work/DevOps2023-2024-Group3/DevOps2023-2024-Group3/WWA-frontend-master
+          cd /home/runner/work/reactapp-test/reactapp-test/WWA-frontend-master
           npm run docs
 
     - name: Commit and push change
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update documentation
-        branch: dev-L00171125-Abhishek-DGW-132
+        branch: main
 
 
   SonarCloudScan:
@@ -252,21 +252,21 @@ jobs:
         run: npm install -g snyk
 
       - name: Snyk Security Scans
-        run: snyk test --org=shreyashettys202 --project-name='Project-Group3'
+        run: snyk test --org=nayanaatu --project-name='reactapp-test'
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         working-directory: WWA-backend-master
 
       - name: Snyk Security Scan Frontend
-        run: snyk test --org=shreyashettys202 --project-name='Project-Group3'
+        run: snyk test --org=nayanaatu --project-name='reactapp-test'
         continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         working-directory: WWA-frontend-master
                 
       - name: Snyk Monitor
-        run: snyk monitor --org=shreyashettys202 --project-name='Project-Group3'
+        run: snyk monitor --org=nayanaatu --project-name='reactapp-test'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         working-directory: WWA-backend-master
@@ -276,7 +276,7 @@ jobs:
          pwd
          ls
          npm install --force
-         snyk monitor --org=shreyashettys202 --project-name='Project-Group3'
+         snyk monitor --org=nayanaatu --project-name='reactapp-test'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         working-directory: WWA-frontend-master
