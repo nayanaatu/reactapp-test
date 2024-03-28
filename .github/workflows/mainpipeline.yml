@@ -39,7 +39,6 @@ jobs:
   iac-build-and-deploy:
     runs-on: ubuntu-latest
     permissions: write-all
-    needs: build-test-and-deploy
     outputs:
       target_url: ${{ steps.running-terraform-commands.outputs.target }}
     steps:
