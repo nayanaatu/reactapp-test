@@ -3,7 +3,7 @@ name: frontend-master-workflow
 on: 
   push:
     branches:
-      - dev-L00171125-Abhishek-DGW-132
+      - main
   pull_request:
     types:
       - "opened"
