@@ -193,8 +193,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=wwag3
-            -Dsonar.projectKey=shreyashettys202_DevOps2023-2024-Group3
+            -Dsonar.organization=nayanaatu
+            -Dsonar.projectKey=nayanaatu
             -Dsonar.sources=.
             -Dsonar.login=${{ secrets.SONARCLOUD_TOKEN }}
             -Dsonar.javascript.lcov.reportPaths=WWA-backend-master/coverage/lcov.info
