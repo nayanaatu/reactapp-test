@@ -205,11 +205,12 @@ jobs:
     name: OWASP-ZAP_scaning
     permissions: write-all
     steps:
+      - name: Wait for 2 minutes
+        run: sleep 120
       - name: Checkout repository
-        uses: actions/checkout@v4
-       #  with:
-       #   ref: main
-
+        uses: actions/checkout@v2
+        with:
+          ref: main
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.9.0
         with:
