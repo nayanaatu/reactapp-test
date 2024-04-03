@@ -256,7 +256,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20' # Adjust based on your project's Node.js version
+          node-version: '20' # Adjust based on your project's Node.js versio
 
       - name: Install Snyk CLI
         run: npm install -g snyk
